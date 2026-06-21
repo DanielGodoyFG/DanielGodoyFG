@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portfolio de Desarrollo</title>
+    <style>
+        /* Aquí empieza el CSS (El Diseño) */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #1e1e1e;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00ff88;
+        }
+        h1 { margin: 0; font-size: 2.5em; }
+        .subtitle { color: #aaaaaa; font-size: 1.2em; }
+        
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .project-card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00ff88;
+        }
+        .tech-tag {
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            color: #00ff88;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hola, soy [Tu Nombre]</h1>
+        <p class="subtitle">Programador de Videojuegos y Entornos Interactivos</p>
+    </header>
+
+    <div class="container">
+        <h2>Mis Proyectos</h2>
+
+        <div class="project-card">
+            <h3>Nombre del Juego / Prototipo</h3>
+            <p>Un breve resumen de las mecánicas principales que desarrollaste y los retos técnicos que superaste en este proyecto.</p>
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">Unity</span>
+        </div>
+
+        <div class="project-card">
+            <h3>Sistema de Físicas Avanzado</h3>
+            <p>Implementación de físicas personalizadas y renderizado en tiempo real. Aquí puedes añadir enlaces a vídeos de demostración.</p>
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">Unreal Engine</span>
+        </div>
+    </div>
+</body>
+</html>
