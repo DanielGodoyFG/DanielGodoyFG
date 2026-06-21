@@ -3,167 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Turquesa y Redondito</title>
-    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <title>Portfolio - 2000s Frutiger Edgy</title>
     <style>
         /* ======================================================
-           FONDO TURQUESA OSCURO
+           RESET TOTAL PARA OCUPAR TODA LA PANTALLA
            ====================================================== */
-        body {
-            /* Fondo base oscuro con un toque turquesa (teal) */
-            background-color: #02161b; 
-            /* Degradado radial para dar profundidad */
-            background: radial-gradient(circle at top, #052c36 0%, #010f13 100%);
-            color: #ffffff;
-            font-family: 'Varela Round', sans-serif;
+        html, body {
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        /* Contenedor principal que centra todo en la pantalla */
-        .contenedor-principal {
-            max-width: 1100px;
-            margin: 0 auto; /* Centra el bloque */
-            padding: 40px 20px;
+            height: 100vh; /* 100% de la altura de la ventana */
+            overflow: hidden; /* Evita el scroll general de la página */
+            /* Fuente clásica de los 2000s (Windows XP/Vista) */
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
         }
 
         /* ======================================================
-           PARTE DE ARRIBA (CABECERA COMPLETA)
+           CABECERA (HEADER) - FRUTIGER AERO OSCURO
            ====================================================== */
         .cabecera {
             width: 100%;
-            text-align: left;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-            /* La línea horizontal de tu dibujo */
-            border-bottom: 3px solid #00e5ff; 
-            box-shadow: 0 10px 15px -10px rgba(0, 229, 255, 0.3);
+            /* Degradado de cristal clásico Frutiger Aero (Turquesa oscuro) */
+            background: linear-gradient(to bottom, #008b8b 0%, #004d4d 50%, #003333 51%, #001a1a 100%);
+            /* Borde negro grueso "Edgy/Baldi's" */
+            border-bottom: 4px solid #000000;
+            padding: 15px 30px;
+            box-sizing: border-box;
+            /* Brillo blanco superior para efecto cristal 3D */
+            box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.4);
         }
 
         .cabecera h1 {
             margin: 0;
-            font-size: 3.5em;
+            font-size: 2.5em;
             color: #ffffff;
-            /* Brillo turquesa */
-            text-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
-            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px #000000; /* Sombra dura antigua */
+            letter-spacing: -1px;
         }
 
         .cabecera p {
-            color: #b3f0ff;
-            font-size: 1.3em;
-            margin: 5px 0 0 0;
+            color: #00ffff; /* Cian puro muy de los 2000 */
+            font-size: 1.1em;
+            margin: 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 0px #000000;
         }
 
         /* ======================================================
-           PARTE DE ABAJO (DIVIDIDA EN DOS)
+           CUERPO DIVIDIDO A PANTALLA COMPLETA
            ====================================================== */
         .cuerpo-dividido {
             display: flex;
-            gap: 40px; /* Separación entre botones y contenido */
-            align-items: flex-start;
-        }
-
-        /* --- COLUMNA IZQUIERDA (BOTONES ÓVALO) --- */
-        .menu-lateral {
-            width: 220px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 20px; /* Separación entre óvalos */
-        }
-
-        .boton-ovalo {
-            background-color: rgba(0, 229, 255, 0.05);
-            /* Forma de óvalo perfecto */
-            border-radius: 50px; 
-            border: 2px solid #00e5ff;
-            color: #ffffff;
-            font-family: inherit;
-            font-size: 1.2em;
-            padding: 15px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.2), inset 0 0 5px rgba(0, 229, 255, 0.1);
-        }
-
-        .boton-ovalo:hover {
-            background-color: rgba(0, 229, 255, 0.2);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.3);
-            transform: scale(1.05); /* Se agranda un poco al pasar el ratón */
-            text-shadow: 0 0 5px #ffffff;
-        }
-
-        /* --- COLUMNA DERECHA (CAJA GRANDE DE CONTENIDO) --- */
-        .caja-contenido {
-            flex-grow: 1; /* Ocupa todo el espacio que sobra a la derecha */
-            background: linear-gradient(135deg, rgba(4, 38, 48, 0.7), rgba(1, 15, 19, 0.7));
-            backdrop-filter: blur(8px);
-            /* Esquinas muy redondeadas como en tu dibujo */
-            border-radius: 40px; 
-            padding: 40px;
-            border: 2px solid rgba(0, 229, 255, 0.4);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.15), inset 0 0 15px rgba(0, 229, 255, 0.05);
-        }
-
-        .caja-contenido h2 {
-            margin-top: 0;
-            color: #00e5ff;
-            font-size: 2em;
-            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-        }
-
-        .caja-contenido p {
-            font-size: 1.1em;
-            color: #d1f4ff;
+            flex-grow: 1; /* Ocupa toda la altura restante debajo del header */
+            width: 100%;
         }
 
         /* ======================================================
-           ADAPTACIÓN PARA MÓVILES
+           MENÚ LATERAL - ESTILO "FRAMESET" DE LOS 90/00s
            ====================================================== */
-        @media (max-width: 800px) {
-            .cuerpo-dividido {
-                flex-direction: column; /* Apila el menú arriba y la caja abajo */
-            }
-            .menu-lateral {
-                width: 100%;
-            }
-            .cabecera h1 {
-                font-size: 2.5em; /* Achica la letra en el móvil */
-            }
+        .menu-lateral {
+            width: 250px;
+            background-color: #0d1b1e;
+            /* Borde negro duro separando la pantalla */
+            border-right: 4px solid #000000;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            /* Sombra interior para dar profundidad al menú */
+            box-shadow: inset -5px 0px 10px rgba(0,0,0,0.5);
+        }
+
+        /* ======================================================
+           BOTONES TIPO PASTILLA (PILL BUTTONS FRUTIGER)
+           ====================================================== */
+        .boton-ovalo {
+            width: 100%;
+            /* Forma de óvalo perfecto */
+            border-radius: 50px;
+            /* Degradado cristalino cian/verde agua */
+            background: linear-gradient(to bottom, #00ffff 0%, #00b3b3 45%, #008080 50%, #004d4d 100%);
+            /* Borde duro negro */
+            border: 2px solid #000000;
+            color: #ffffff;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 10px 15px;
+            text-align: center;
+            cursor: pointer;
+            /* Sombra caída de bloque (Edgy) y brillo superior (Frutiger) */
+            box-shadow: inset 0px 3px 5px rgba(255, 255, 255, 0.8), 3px 3px 0px #000000;
+        }
+
+        .boton-ovalo:active {
+            /* Efecto clásico de click (se hunde) */
+            transform: translate(2px, 2px);
+            box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4), 1px 1px 0px #000000;
+        }
+
+        /* ======================================================
+           CAJA DE CONTENIDO PRINCIPAL
+           ====================================================== */
+        .caja-contenido {
+            flex-grow: 1; /* Se estira hasta el final derecho */
+            background-color: #022026;
+            /* Degradado sutil de fondo */
+            background: radial-gradient(circle at center, #003333 0%, #011417 100%);
+            padding: 30px;
+            /* Permite hacer scroll SOLO en esta zona de la pantalla */
+            overflow-y: auto; 
+            box-sizing: border-box;
+            /* Sombra interior dura que imita la web antigua */
+            box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .caja-contenido h2 {
+            color: #00ffff;
+            border-bottom: 2px dashed #008b8b; /* Línea punteada clásica */
+            padding-bottom: 5px;
+            margin-top: 0;
+            text-shadow: 2px 2px 0px #000000;
+        }
+
+        .caja-contenido p {
+            color: #c4f5f5;
+            font-size: 1.1em;
+            line-height: 1.4; /* Interlineado más apretado, típico de esa época */
+        }
+
+        /* Cajas de proyectos con un estilo más crudo */
+        .proyecto-retro {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid #005f5f;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
 
-    <div class="contenedor-principal">
+    <header class="cabecera">
+        <h1>Nombre Apellido</h1>
+        <p>Programación Unreal & Unity // WebZone</p>
+    </header>
+
+    <div class="cuerpo-dividido">
         
-        <header class="cabecera">
-            <h1>Nombre Apellido</h1>
-            <p>Programador de Videojuegos · Unity & Unreal</p>
-        </header>
+        <nav class="menu-lateral">
+            <button class="boton-ovalo">Proyectos</button>
+            <button class="boton-ovalo">Habilidades</button>
+            <button class="boton-ovalo">Sobre mí</button>
+            <button class="boton-ovalo">Contacto</button>
+        </nav>
 
-        <div class="cuerpo-dividido">
+        <main class="caja-contenido">
+            <h2>> Directorio_Principal</h2>
+            <p>El diseño ahora abraza completamente los bordes del navegador. No hay márgenes. El menú de la izquierda es fijo y llega hasta abajo del todo. Si pones mucho texto aquí, solo se moverá esta parte de la pantalla al hacer scroll, como las webs antiguas hechas con HTML Frames.</p>
             
-            <nav class="menu-lateral">
-                <button class="boton-ovalo">Proyectos</button>
-                <button class="boton-ovalo">Habilidades</button>
-                <button class="boton-ovalo">Sobre mí</button>
-                <button class="boton-ovalo">Contacto</button>
-            </nav>
-
-            <main class="caja-contenido">
-                <h2>Inventario de Proyectos</h2>
-                <p>Este es el panel principal donde se mostrará el contenido dependiendo de lo que elijas en el menú de la izquierda.</p>
-                <p>Toda esta caja tiene un efecto de cristal translúcido turquesa y esquinas extremadamente redondeadas para imitar tu boceto y la interfaz visual que tenías en mente.</p>
-                <br>
-                <p>Aquí dentro podrías empezar a meter las tarjetas de tus juegos, gifs de los prototipos o bloques de código.</p>
-            </main>
-
-        </div>
+            <div class="proyecto-retro">
+                <h3 style="margin-top:0; color: #00ffff;">Sistema de Combate.exe</h3>
+                <p>Implementación en C++. Las sombras aquí son "duras" (sin difuminar) para dar ese toque retro-edgy, y los degradados tienen cortes bruscos a la mitad imitando los brillos de cristal falsos del Frutiger Aero.</p>
+            </div>
+            
+            <div class="proyecto-retro">
+                <h3 style="margin-top:0; color: #00ffff;">Plataformas_3D.unity</h3>
+                <p>Las fuentes ya no son modernas, estamos usando Trebuchet MS y Arial, el estándar de Windows a principios de los 2000. Los botones parecen de plástico grueso.</p>
+            </div>
+        </main>
 
     </div>
 
