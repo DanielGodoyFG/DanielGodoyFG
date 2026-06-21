@@ -20,11 +20,12 @@
         }
 
         /* ======================================================
-           CABECERA (HEADER)
+           CABECERA (HEADER) - CORTE MÁS BAJO
            ====================================================== */
         .cabecera {
             width: 100%;
-            background: linear-gradient(to bottom, #008b8b 0%, #004d4d 50%, #003333 51%, #001a1a 100%);
+            /* El punto de corte del cristal ha bajado del 50% al 70/71% */
+            background: linear-gradient(to bottom, #008b8b 0%, #005f5f 70%, #002626 71%, #001a1a 100%);
             border-bottom: 4px solid #000000;
             padding: 15px 30px;
             box-sizing: border-box;
@@ -72,12 +73,19 @@
         }
 
         /* ======================================================
-           BOTONES TIPO PASTILLA (ANIMADOS)
+           BOTONES TIPO PASTILLA (BRILLO CURVO REALISTA)
            ====================================================== */
         .boton-ovalo {
             width: 100%;
             border-radius: 50px;
-            background: linear-gradient(to bottom, #00ffff 0%, #00b3b3 45%, #008080 50%, #004d4d 100%);
+            
+            /* TRUCO FRUTIGER AERO: 
+               1. Una elipse blanca translúcida pegada arriba que hace de reflejo curvo.
+               2. Un degradado lineal suave de fondo. */
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% 5%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 100%),
+                linear-gradient(to bottom, #00b3b3 0%, #004d4d 100%);
+            
             border: 2px solid #000000;
             color: #ffffff;
             font-family: 'Trebuchet MS', sans-serif;
@@ -86,22 +94,23 @@
             padding: 10px 15px;
             text-align: center;
             cursor: pointer;
-            box-shadow: inset 0px 3px 5px rgba(255, 255, 255, 0.8), 3px 3px 0px #000000;
-            /* Añadimos una transición rápida para que el movimiento sea fluido pero mecánico */
-            transition: all 0.1s ease-out; 
+            transition: all 0.1s ease-out;
+            
+            /* Sombra oscura interior abajo para dar volumen, sombra negra exterior para el borde duro */
+            box-shadow: inset 0px -5px 10px rgba(0, 0, 0, 0.3), 3px 3px 0px #000000;
         }
 
-        /* EFECTO HOVER: Se levanta hacia arriba y a la izquierda, la sombra crece */
         .boton-ovalo:hover {
             transform: translate(-2px, -2px);
-            box-shadow: inset 0px 3px 5px rgba(255, 255, 255, 0.9), 5px 5px 0px #000000;
-            filter: brightness(1.1); /* Brilla un poco más al pasar el ratón */
+            /* Aumentamos la sombra negra de caída para que parezca que sube */
+            box-shadow: inset 0px -5px 10px rgba(0, 0, 0, 0.3), 5px 5px 0px #000000;
+            filter: brightness(1.15); /* Aumenta la intensidad del brillo curvo */
         }
 
-        /* EFECTO ACTIVE (CLIC): Se hunde contra el fondo */
         .boton-ovalo:active {
             transform: translate(2px, 2px);
-            box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4), 1px 1px 0px #000000;
+            /* Se hunde: quitamos sombra de caída y metemos más sombra oscura por arriba */
+            box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.5), 1px 1px 0px #000000;
             filter: brightness(0.9);
         }
 
@@ -159,16 +168,16 @@
 
         <main class="caja-contenido">
             <h2>> Directorio_Principal</h2>
-            <p>Pasa el ratón por los botones de la izquierda. Ahora se levantan (desplazándose un par de píxeles en diagonal) y la sombra dura proyectada aumenta para enfatizar la sensación de bloque 3D flotante.</p>
+            <p>Si te fijas ahora en los botones de la izquierda, el reflejo blanco se pinta desde el centro superior y se difumina hacia los lados siguiendo el `border-radius`. Ya no hay una línea recta que rompa el botón por la mitad.</p>
             
             <div class="proyecto-retro">
                 <h3 style="margin-top:0; color: #00ffff;">Sistema de Combate.exe</h3>
-                <p>Implementación en C++. Las sombras aquí son "duras" (sin difuminar) para dar ese toque retro-edgy, y los degradados tienen cortes bruscos a la mitad imitando los brillos de cristal falsos del Frutiger Aero.</p>
+                <p>También he ajustado el efecto al hacer clic (`:active`). Ahora cuando presionas el botón, la sombra negra exterior se encoge y aparece una sombra oscura en la parte interior superior, simulando que el plástico se hunde mecánicamente contra el fondo.</p>
             </div>
             
             <div class="proyecto-retro">
                 <h3 style="margin-top:0; color: #00ffff;">Plataformas_3D.unity</h3>
-                <p>Las fuentes ya no son modernas, estamos usando Trebuchet MS y Arial, el estándar de Windows a principios de los 2000. Los botones parecen de plástico grueso.</p>
+                <p>La cabecera tiene el horizonte de cristal un poco más bajo, dando más espacio a los títulos para que respiren dentro de la zona iluminada.</p>
             </div>
         </main>
 
