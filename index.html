@@ -11,9 +11,8 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100vh; /* 100% de la altura de la ventana */
-            overflow: hidden; /* Evita el scroll general de la página */
-            /* Fuente clásica de los 2000s (Windows XP/Vista) */
+            height: 100vh;
+            overflow: hidden;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             background-color: #000000;
             display: flex;
@@ -21,17 +20,14 @@
         }
 
         /* ======================================================
-           CABECERA (HEADER) - FRUTIGER AERO OSCURO
+           CABECERA (HEADER)
            ====================================================== */
         .cabecera {
             width: 100%;
-            /* Degradado de cristal clásico Frutiger Aero (Turquesa oscuro) */
             background: linear-gradient(to bottom, #008b8b 0%, #004d4d 50%, #003333 51%, #001a1a 100%);
-            /* Borde negro grueso "Edgy/Baldi's" */
             border-bottom: 4px solid #000000;
             padding: 15px 30px;
             box-sizing: border-box;
-            /* Brillo blanco superior para efecto cristal 3D */
             box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.4);
         }
 
@@ -39,12 +35,12 @@
             margin: 0;
             font-size: 2.5em;
             color: #ffffff;
-            text-shadow: 2px 2px 0px #000000; /* Sombra dura antigua */
+            text-shadow: 2px 2px 0px #000000;
             letter-spacing: -1px;
         }
 
         .cabecera p {
-            color: #00ffff; /* Cian puro muy de los 2000 */
+            color: #00ffff;
             font-size: 1.1em;
             margin: 0;
             font-weight: bold;
@@ -52,41 +48,36 @@
         }
 
         /* ======================================================
-           CUERPO DIVIDIDO A PANTALLA COMPLETA
+           CUERPO DIVIDIDO
            ====================================================== */
         .cuerpo-dividido {
             display: flex;
-            flex-grow: 1; /* Ocupa toda la altura restante debajo del header */
+            flex-grow: 1;
             width: 100%;
         }
 
         /* ======================================================
-           MENÚ LATERAL - ESTILO "FRAMESET" DE LOS 90/00s
+           MENÚ LATERAL
            ====================================================== */
         .menu-lateral {
             width: 250px;
             background-color: #0d1b1e;
-            /* Borde negro duro separando la pantalla */
             border-right: 4px solid #000000;
             padding: 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            /* Sombra interior para dar profundidad al menú */
             box-shadow: inset -5px 0px 10px rgba(0,0,0,0.5);
         }
 
         /* ======================================================
-           BOTONES TIPO PASTILLA (PILL BUTTONS FRUTIGER)
+           BOTONES TIPO PASTILLA (ANIMADOS)
            ====================================================== */
         .boton-ovalo {
             width: 100%;
-            /* Forma de óvalo perfecto */
             border-radius: 50px;
-            /* Degradado cristalino cian/verde agua */
             background: linear-gradient(to bottom, #00ffff 0%, #00b3b3 45%, #008080 50%, #004d4d 100%);
-            /* Borde duro negro */
             border: 2px solid #000000;
             color: #ffffff;
             font-family: 'Trebuchet MS', sans-serif;
@@ -95,35 +86,41 @@
             padding: 10px 15px;
             text-align: center;
             cursor: pointer;
-            /* Sombra caída de bloque (Edgy) y brillo superior (Frutiger) */
             box-shadow: inset 0px 3px 5px rgba(255, 255, 255, 0.8), 3px 3px 0px #000000;
+            /* Añadimos una transición rápida para que el movimiento sea fluido pero mecánico */
+            transition: all 0.1s ease-out; 
         }
 
+        /* EFECTO HOVER: Se levanta hacia arriba y a la izquierda, la sombra crece */
+        .boton-ovalo:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: inset 0px 3px 5px rgba(255, 255, 255, 0.9), 5px 5px 0px #000000;
+            filter: brightness(1.1); /* Brilla un poco más al pasar el ratón */
+        }
+
+        /* EFECTO ACTIVE (CLIC): Se hunde contra el fondo */
         .boton-ovalo:active {
-            /* Efecto clásico de click (se hunde) */
             transform: translate(2px, 2px);
             box-shadow: inset 0px 1px 3px rgba(255, 255, 255, 0.4), 1px 1px 0px #000000;
+            filter: brightness(0.9);
         }
 
         /* ======================================================
            CAJA DE CONTENIDO PRINCIPAL
            ====================================================== */
         .caja-contenido {
-            flex-grow: 1; /* Se estira hasta el final derecho */
+            flex-grow: 1;
             background-color: #022026;
-            /* Degradado sutil de fondo */
             background: radial-gradient(circle at center, #003333 0%, #011417 100%);
             padding: 30px;
-            /* Permite hacer scroll SOLO en esta zona de la pantalla */
             overflow-y: auto; 
             box-sizing: border-box;
-            /* Sombra interior dura que imita la web antigua */
             box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.8);
         }
 
         .caja-contenido h2 {
             color: #00ffff;
-            border-bottom: 2px dashed #008b8b; /* Línea punteada clásica */
+            border-bottom: 2px dashed #008b8b;
             padding-bottom: 5px;
             margin-top: 0;
             text-shadow: 2px 2px 0px #000000;
@@ -132,10 +129,9 @@
         .caja-contenido p {
             color: #c4f5f5;
             font-size: 1.1em;
-            line-height: 1.4; /* Interlineado más apretado, típico de esa época */
+            line-height: 1.4;
         }
 
-        /* Cajas de proyectos con un estilo más crudo */
         .proyecto-retro {
             background-color: rgba(0, 0, 0, 0.6);
             border: 2px solid #005f5f;
@@ -163,7 +159,7 @@
 
         <main class="caja-contenido">
             <h2>> Directorio_Principal</h2>
-            <p>El diseño ahora abraza completamente los bordes del navegador. No hay márgenes. El menú de la izquierda es fijo y llega hasta abajo del todo. Si pones mucho texto aquí, solo se moverá esta parte de la pantalla al hacer scroll, como las webs antiguas hechas con HTML Frames.</p>
+            <p>Pasa el ratón por los botones de la izquierda. Ahora se levantan (desplazándose un par de píxeles en diagonal) y la sombra dura proyectada aumenta para enfatizar la sensación de bloque 3D flotante.</p>
             
             <div class="proyecto-retro">
                 <h3 style="margin-top:0; color: #00ffff;">Sistema de Combate.exe</h3>
