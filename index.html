@@ -20,7 +20,7 @@
         }
 
         /* ======================================================
-           CABECERA (Efecto Cristal Frutiger Aero Pesado)
+           CABECERA (Brillo reducido al 30%)
            ====================================================== */
         .cabecera-contenedor {
             width: 100%;
@@ -30,16 +30,14 @@
         }
 
         .cabecera-top {
-            /* Capa 1: Resplandor blanco curvo gigante imitando el reflejo del tubo fluorescente/cielo */
-            /* Capa 2: Base turquesa un poco más clara para compensar el blanco */
+            /* Opacidad del resplandor bajada de 0.6 a 0.3 */
             background: 
-                radial-gradient(ellipse 150% 100% at 50% 0%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 60%),
+                radial-gradient(ellipse 150% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%),
                 linear-gradient(to bottom, #00b3b3 0%, #005f5f 100%);
             padding: 15px 30px 10px 30px;
-            /* El canto del cristal atrapando la luz */
-            border-top: 1px solid rgba(255, 255, 255, 0.6);
-            /* Sombra interna para dar volumen al borde superior */
-            box-shadow: inset 0px 4px 8px rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            /* Sombra interna suavizada */
+            box-shadow: inset 0px 4px 8px rgba(255, 255, 255, 0.4);
         }
 
         .cabecera-top h1 {
@@ -53,7 +51,7 @@
         .cabecera-bottom {
             background: linear-gradient(to bottom, #002626 0%, #001212 100%);
             padding: 12px 30px; 
-            box-shadow: inset 0px 3px 5px rgba(0,0,0,0.6); /* Sombra interior más dura */
+            box-shadow: inset 0px 3px 5px rgba(0,0,0,0.6);
         }
 
         .cabecera-bottom p {
@@ -85,23 +83,20 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            box-shadow: inset -5px 0px 10px rgba(0,0,0,0.6);
+            box-shadow: inset -5px 0px 10px rgba(0,0,0,0.5);
         }
 
         /* ======================================================
-           BOTONES PASTILLA (Reflejo Gel/Vidrio)
+           BOTONES PASTILLA (Reflejo domado + Legibilidad)
            ====================================================== */
         .boton-ovalo {
             width: 100%;
             border-radius: 50px;
             
-            /* TRIPLE CAPA para el shader perfecto de cristal:
-               1. Sombras laterales curvas (Ambient Occlusion)
-               2. Capa de Gel: Blanco opaco arriba difuminándose hasta el corte del 48%
-               3. Color base y profundidad */
+            /* Opacidad de la capa de gel bajada drásticamente (de 0.8 a 0.3) */
             background: 
                 linear-gradient(to right, rgba(0, 30, 30, 0.6) 0%, transparent 15%, transparent 85%, rgba(0, 30, 30, 0.6) 100%),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 48%, transparent 49%),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 48%, transparent 49%),
                 linear-gradient(to bottom, #00e6e6 0%, #00b3b3 48%, #006666 48%, #003333 100%);
                 
             border: 2px solid #000000;
@@ -114,9 +109,12 @@
             cursor: pointer;
             transition: all 0.1s ease-out;
             
-            /* Brillo blanco intensificado en el borde superior */
+            /* SOMBRA DE TEXTO: Esto salva la legibilidad */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            
+            /* Bisel blanco interno reducido */
             box-shadow: 
-                inset 0px 6px 8px rgba(255, 255, 255, 0.9), 
+                inset 0px 6px 8px rgba(255, 255, 255, 0.4), 
                 inset 0px -4px 6px rgba(0, 0, 0, 0.7), 
                 4px 4px 0px #000000;
         }
@@ -124,18 +122,17 @@
         .boton-ovalo:hover {
             transform: translate(-2px, -2px);
             box-shadow: 
-                inset 0px 6px 8px rgba(255, 255, 255, 1), 
+                inset 0px 6px 8px rgba(255, 255, 255, 0.6), 
                 inset 0px -4px 6px rgba(0, 0, 0, 0.7), 
                 6px 6px 0px #000000;
-            /* Aumenta el contraste del brillo al pasar el ratón */
-            filter: brightness(1.1) contrast(1.1); 
+            filter: brightness(1.1); 
         }
 
         .boton-ovalo:active {
             transform: translate(2px, 2px);
             box-shadow: 
-                inset 0px 6px 8px rgba(0, 0, 0, 0.7), 
-                inset 0px -2px 4px rgba(255, 255, 255, 0.2), 
+                inset 0px 6px 8px rgba(0, 0, 0, 0.5), 
+                inset 0px -2px 4px rgba(255, 255, 255, 0.1), 
                 1px 1px 0px #000000;
             filter: brightness(0.9);
         }
@@ -198,11 +195,11 @@
 
         <main class="caja-contenido">
             <h2>> Directorio_Principal</h2>
-            <p>Ahora sí. La cabecera tiene esa curva suave de luz por encima de tu nombre que grita "Frutiger Aero", respaldada por un bisel luminoso superior. Parece un panel táctil de cristal pulido.</p>
+            <p>Los blancos intensos se han domado. Ahora la cabecera tiene un resplandor mucho más sutil que deja respirar al color turquesa de fondo.</p>
             
             <div class="proyecto-retro">
-                <h3 style="margin-top:0; color: #00ffff;">Efecto_Gelatina.css</h3>
-                <p>En los botones he metido el mítico efecto "Aero Glass". Hay una capa literalmente blanca y semitransparente que cubre la mitad superior del botón. El contraste que hace al chocar con el corte de la mitad inferior le da el volumen máximo que permite CSS.</p>
+                <h3 style="margin-top:0; color: #00ffff;">Boton_Gelatina_v2.css</h3>
+                <p>En los botones he bajado la opacidad de la capa blanca a menos de la mitad y he añadido una sombra negra suave detrás de las letras (`text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8)`). El resultado es que mantienes el volumen de gel 3D, pero el texto se lee perfectamente a la primera.</p>
             </div>
         </main>
 
