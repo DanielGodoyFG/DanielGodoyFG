@@ -20,31 +20,42 @@
         }
 
         /* ======================================================
-           CABECERA (Corte exacto entre textos)
+           CABECERA (Dividida en dos bloques para centrado perfecto)
            ====================================================== */
-        .cabecera {
+        .cabecera-contenedor {
             width: 100%;
-            /* Corte duro al 65%: Pasa instantáneamente del turquesa al oscuro */
-            background: linear-gradient(to bottom, #008b8b 0%, #006666 65%, #002626 65%, #001a1a 100%);
             border-bottom: 4px solid #000000;
-            padding: 20px 30px;
-            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Bloque superior claro */
+        .cabecera-top {
+            background: linear-gradient(to bottom, #008b8b 0%, #005f5f 100%);
+            padding: 15px 30px 10px 30px; /* Un poco menos de padding abajo */
             box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.4);
         }
 
-        .cabecera h1 {
+        .cabecera-top h1 {
             margin: 0;
-            padding-bottom: 5px; /* Empuja el corte hacia abajo */
             font-size: 2.8em;
             color: #ffffff;
             text-shadow: 2px 2px 0px #000000;
             letter-spacing: -1px;
         }
 
-        .cabecera p {
+        /* Bloque inferior oscuro (El texto queda matemáticamente centrado aquí) */
+        .cabecera-bottom {
+            background: linear-gradient(to bottom, #002626 0%, #001212 100%);
+            /* Padding igual arriba y abajo (12px) = centrado perfecto del texto */
+            padding: 12px 30px; 
+            box-shadow: inset 0px 3px 5px rgba(0,0,0,0.4);
+        }
+
+        .cabecera-bottom p {
             color: #00ffff;
             font-size: 1.1em;
-            margin: 10px 0 0 0; /* Separa el texto del corte */
+            margin: 0;
             font-weight: bold;
             text-shadow: 1px 1px 0px #000000;
         }
@@ -74,14 +85,19 @@
         }
 
         /* ======================================================
-           BOTONES PASTILLA (Corte duro + Brillo curvo)
+           BOTONES PASTILLA (Capa de sombras + Corte central)
            ====================================================== */
         .boton-ovalo {
             width: 100%;
             border-radius: 50px;
             
-            /* Degradado con corte duro en el 48% */
-            background: linear-gradient(to bottom, #00ffff 0%, #00b3b3 48%, #008080 48%, #004d4d 100%);
+            /* Doble Background: 
+               Capa 1 (Arriba): Sombra a los lados (Izq y Der) para oscurecer los bordes redondos.
+               Capa 2 (Debajo): El degradado lineal con el corte duro al 48%. */
+            background: 
+                linear-gradient(to right, rgba(0, 30, 30, 0.8) 0%, transparent 15%, transparent 85%, rgba(0, 30, 30, 0.8) 100%),
+                linear-gradient(to bottom, #00ffff 0%, #00b3b3 48%, #008080 48%, #004d4d 100%);
+                
             border: 2px solid #000000;
             color: #ffffff;
             font-family: 'Trebuchet MS', sans-serif;
@@ -92,29 +108,24 @@
             cursor: pointer;
             transition: all 0.1s ease-out;
             
-            /* El secreto está aquí: 
-               1º Inset blanco: Dibuja una línea de luz interna que sigue la curva superior.
-               2º Inset negro: Da sombra en la curva inferior.
-               3º Sombra normal: El bloque 3D exterior. */
+            /* Sombras 3D del bloque */
             box-shadow: 
-                inset 0px 6px 8px rgba(255, 255, 255, 0.7), 
-                inset 0px -4px 6px rgba(0, 0, 0, 0.4), 
+                inset 0px 6px 8px rgba(255, 255, 255, 0.5), 
+                inset 0px -4px 6px rgba(0, 0, 0, 0.5), 
                 4px 4px 0px #000000;
         }
 
         .boton-ovalo:hover {
             transform: translate(-2px, -2px);
-            /* Reforzamos las luces y sombras al pasar el ratón */
             box-shadow: 
-                inset 0px 6px 8px rgba(255, 255, 255, 0.9), 
-                inset 0px -4px 6px rgba(0, 0, 0, 0.4), 
+                inset 0px 6px 8px rgba(255, 255, 255, 0.7), 
+                inset 0px -4px 6px rgba(0, 0, 0, 0.5), 
                 6px 6px 0px #000000;
             filter: brightness(1.1);
         }
 
         .boton-ovalo:active {
             transform: translate(2px, 2px);
-            /* Al hundirse, invertimos la luz: sombra oscura arriba, luz abajo */
             box-shadow: 
                 inset 0px 6px 8px rgba(0, 0, 0, 0.6), 
                 inset 0px -2px 4px rgba(255, 255, 255, 0.3), 
@@ -160,9 +171,13 @@
 </head>
 <body>
 
-    <header class="cabecera">
-        <h1>Nombre Apellido</h1>
-        <p>Programación Unreal & Unity // WebZone</p>
+    <header class="cabecera-contenedor">
+        <div class="cabecera-top">
+            <h1>Nombre Apellido</h1>
+        </div>
+        <div class="cabecera-bottom">
+            <p>Programación Unreal & Unity // WebZone</p>
+        </div>
     </header>
 
     <div class="cuerpo-dividido">
@@ -176,11 +191,11 @@
 
         <main class="caja-contenido">
             <h2>> Directorio_Principal</h2>
-            <p>Los botones ahora recuperan el corte agresivo horizontal en el fondo, pero el resplandor de cristal superior ahora calca la forma curva gracias al `inset`. La cabecera hace el corte oscuro justo por encima de las letras del subtítulo.</p>
+            <p>Fíjate ahora en los extremos de los botones. El brillo central sigue siendo un corte duro de píxel perfecto al 48%, pero el degradado oscuro lateral hace que las esquinas se pierdan en la sombra, imitando el volumen curvo de plástico.</p>
             
             <div class="proyecto-retro">
                 <h3 style="margin-top:0; color: #00ffff;">Sistema de Combate.exe</h3>
-                <p>Las matemáticas de CSS son precisas, pero dependen de la resolución. Si ves que el corte de la cabecera baila un poco en tu pantalla, puedes ajustar el porcentaje `65%` en el bloque `.cabecera` (subirlo a 68% o bajarlo a 60%) hasta que encaje perfecto en tu monitor.</p>
+                <p>La cabecera ahora son técnicamente dos bloques separados unidos sin espacio entre ellos. Esto garantiza que sin importar desde dónde abras la web, el subtítulo siempre flotará exactamente en el medio geométrico de la banda oscura.</p>
             </div>
         </main>
 
