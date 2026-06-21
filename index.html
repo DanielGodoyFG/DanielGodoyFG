@@ -20,7 +20,7 @@
         }
 
         /* ======================================================
-           CABECERA (Dividida en dos bloques para centrado perfecto)
+           CABECERA (Efecto Cristal Frutiger Aero Pesado)
            ====================================================== */
         .cabecera-contenedor {
             width: 100%;
@@ -29,11 +29,17 @@
             flex-direction: column;
         }
 
-        /* Bloque superior claro */
         .cabecera-top {
-            background: linear-gradient(to bottom, #008b8b 0%, #005f5f 100%);
-            padding: 15px 30px 10px 30px; /* Un poco menos de padding abajo */
-            box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.4);
+            /* Capa 1: Resplandor blanco curvo gigante imitando el reflejo del tubo fluorescente/cielo */
+            /* Capa 2: Base turquesa un poco más clara para compensar el blanco */
+            background: 
+                radial-gradient(ellipse 150% 100% at 50% 0%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 60%),
+                linear-gradient(to bottom, #00b3b3 0%, #005f5f 100%);
+            padding: 15px 30px 10px 30px;
+            /* El canto del cristal atrapando la luz */
+            border-top: 1px solid rgba(255, 255, 255, 0.6);
+            /* Sombra interna para dar volumen al borde superior */
+            box-shadow: inset 0px 4px 8px rgba(255, 255, 255, 0.8);
         }
 
         .cabecera-top h1 {
@@ -44,12 +50,10 @@
             letter-spacing: -1px;
         }
 
-        /* Bloque inferior oscuro (El texto queda matemáticamente centrado aquí) */
         .cabecera-bottom {
             background: linear-gradient(to bottom, #002626 0%, #001212 100%);
-            /* Padding igual arriba y abajo (12px) = centrado perfecto del texto */
             padding: 12px 30px; 
-            box-shadow: inset 0px 3px 5px rgba(0,0,0,0.4);
+            box-shadow: inset 0px 3px 5px rgba(0,0,0,0.6); /* Sombra interior más dura */
         }
 
         .cabecera-bottom p {
@@ -81,22 +85,24 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            box-shadow: inset -5px 0px 10px rgba(0,0,0,0.5);
+            box-shadow: inset -5px 0px 10px rgba(0,0,0,0.6);
         }
 
         /* ======================================================
-           BOTONES PASTILLA (Capa de sombras + Corte central)
+           BOTONES PASTILLA (Reflejo Gel/Vidrio)
            ====================================================== */
         .boton-ovalo {
             width: 100%;
             border-radius: 50px;
             
-            /* Doble Background: 
-               Capa 1 (Arriba): Sombra a los lados (Izq y Der) para oscurecer los bordes redondos.
-               Capa 2 (Debajo): El degradado lineal con el corte duro al 48%. */
+            /* TRIPLE CAPA para el shader perfecto de cristal:
+               1. Sombras laterales curvas (Ambient Occlusion)
+               2. Capa de Gel: Blanco opaco arriba difuminándose hasta el corte del 48%
+               3. Color base y profundidad */
             background: 
-                linear-gradient(to right, rgba(0, 30, 30, 0.8) 0%, transparent 15%, transparent 85%, rgba(0, 30, 30, 0.8) 100%),
-                linear-gradient(to bottom, #00ffff 0%, #00b3b3 48%, #008080 48%, #004d4d 100%);
+                linear-gradient(to right, rgba(0, 30, 30, 0.6) 0%, transparent 15%, transparent 85%, rgba(0, 30, 30, 0.6) 100%),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 48%, transparent 49%),
+                linear-gradient(to bottom, #00e6e6 0%, #00b3b3 48%, #006666 48%, #003333 100%);
                 
             border: 2px solid #000000;
             color: #ffffff;
@@ -108,27 +114,28 @@
             cursor: pointer;
             transition: all 0.1s ease-out;
             
-            /* Sombras 3D del bloque */
+            /* Brillo blanco intensificado en el borde superior */
             box-shadow: 
-                inset 0px 6px 8px rgba(255, 255, 255, 0.5), 
-                inset 0px -4px 6px rgba(0, 0, 0, 0.5), 
+                inset 0px 6px 8px rgba(255, 255, 255, 0.9), 
+                inset 0px -4px 6px rgba(0, 0, 0, 0.7), 
                 4px 4px 0px #000000;
         }
 
         .boton-ovalo:hover {
             transform: translate(-2px, -2px);
             box-shadow: 
-                inset 0px 6px 8px rgba(255, 255, 255, 0.7), 
-                inset 0px -4px 6px rgba(0, 0, 0, 0.5), 
+                inset 0px 6px 8px rgba(255, 255, 255, 1), 
+                inset 0px -4px 6px rgba(0, 0, 0, 0.7), 
                 6px 6px 0px #000000;
-            filter: brightness(1.1);
+            /* Aumenta el contraste del brillo al pasar el ratón */
+            filter: brightness(1.1) contrast(1.1); 
         }
 
         .boton-ovalo:active {
             transform: translate(2px, 2px);
             box-shadow: 
-                inset 0px 6px 8px rgba(0, 0, 0, 0.6), 
-                inset 0px -2px 4px rgba(255, 255, 255, 0.3), 
+                inset 0px 6px 8px rgba(0, 0, 0, 0.7), 
+                inset 0px -2px 4px rgba(255, 255, 255, 0.2), 
                 1px 1px 0px #000000;
             filter: brightness(0.9);
         }
@@ -191,11 +198,11 @@
 
         <main class="caja-contenido">
             <h2>> Directorio_Principal</h2>
-            <p>Fíjate ahora en los extremos de los botones. El brillo central sigue siendo un corte duro de píxel perfecto al 48%, pero el degradado oscuro lateral hace que las esquinas se pierdan en la sombra, imitando el volumen curvo de plástico.</p>
+            <p>Ahora sí. La cabecera tiene esa curva suave de luz por encima de tu nombre que grita "Frutiger Aero", respaldada por un bisel luminoso superior. Parece un panel táctil de cristal pulido.</p>
             
             <div class="proyecto-retro">
-                <h3 style="margin-top:0; color: #00ffff;">Sistema de Combate.exe</h3>
-                <p>La cabecera ahora son técnicamente dos bloques separados unidos sin espacio entre ellos. Esto garantiza que sin importar desde dónde abras la web, el subtítulo siempre flotará exactamente en el medio geométrico de la banda oscura.</p>
+                <h3 style="margin-top:0; color: #00ffff;">Efecto_Gelatina.css</h3>
+                <p>En los botones he metido el mítico efecto "Aero Glass". Hay una capa literalmente blanca y semitransparente que cubre la mitad superior del botón. El contraste que hace al chocar con el corte de la mitad inferior le da el volumen máximo que permite CSS.</p>
             </div>
         </main>
 
