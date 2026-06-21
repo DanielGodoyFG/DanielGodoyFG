@@ -106,4 +106,66 @@
             border-radius: 40px; 
             padding: 40px;
             border: 2px solid rgba(0, 229, 255, 0.4);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.15), inset
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.15), inset 0 0 15px rgba(0, 229, 255, 0.05);
+        }
+
+        .caja-contenido h2 {
+            margin-top: 0;
+            color: #00e5ff;
+            font-size: 2em;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+
+        .caja-contenido p {
+            font-size: 1.1em;
+            color: #d1f4ff;
+        }
+
+        /* ======================================================
+           ADAPTACIÓN PARA MÓVILES
+           ====================================================== */
+        @media (max-width: 800px) {
+            .cuerpo-dividido {
+                flex-direction: column; /* Apila el menú arriba y la caja abajo */
+            }
+            .menu-lateral {
+                width: 100%;
+            }
+            .cabecera h1 {
+                font-size: 2.5em; /* Achica la letra en el móvil */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-principal">
+        
+        <header class="cabecera">
+            <h1>Nombre Apellido</h1>
+            <p>Programador de Videojuegos · Unity & Unreal</p>
+        </header>
+
+        <div class="cuerpo-dividido">
+            
+            <nav class="menu-lateral">
+                <button class="boton-ovalo">Proyectos</button>
+                <button class="boton-ovalo">Habilidades</button>
+                <button class="boton-ovalo">Sobre mí</button>
+                <button class="boton-ovalo">Contacto</button>
+            </nav>
+
+            <main class="caja-contenido">
+                <h2>Inventario de Proyectos</h2>
+                <p>Este es el panel principal donde se mostrará el contenido dependiendo de lo que elijas en el menú de la izquierda.</p>
+                <p>Toda esta caja tiene un efecto de cristal translúcido turquesa y esquinas extremadamente redondeadas para imitar tu boceto y la interfaz visual que tenías en mente.</p>
+                <br>
+                <p>Aquí dentro podrías empezar a meter las tarjetas de tus juegos, gifs de los prototipos o bloques de código.</p>
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
