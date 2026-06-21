@@ -6,7 +6,7 @@
     <title>Portfolio - 2000s Frutiger Edgy</title>
     <style>
         /* ======================================================
-           RESET TOTAL PARA OCUPAR TODA LA PANTALLA
+           RESET TOTAL
            ====================================================== */
         html, body {
             margin: 0;
@@ -20,21 +20,22 @@
         }
 
         /* ======================================================
-           CABECERA (HEADER) - CORTE MÁS BAJO
+           CABECERA (Corte exacto entre textos)
            ====================================================== */
         .cabecera {
             width: 100%;
-            /* El punto de corte del cristal ha bajado del 50% al 70/71% */
-            background: linear-gradient(to bottom, #008b8b 0%, #005f5f 70%, #002626 71%, #001a1a 100%);
+            /* Corte duro al 65%: Pasa instantáneamente del turquesa al oscuro */
+            background: linear-gradient(to bottom, #008b8b 0%, #006666 65%, #002626 65%, #001a1a 100%);
             border-bottom: 4px solid #000000;
-            padding: 15px 30px;
+            padding: 20px 30px;
             box-sizing: border-box;
             box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.4);
         }
 
         .cabecera h1 {
             margin: 0;
-            font-size: 2.5em;
+            padding-bottom: 5px; /* Empuja el corte hacia abajo */
+            font-size: 2.8em;
             color: #ffffff;
             text-shadow: 2px 2px 0px #000000;
             letter-spacing: -1px;
@@ -43,7 +44,7 @@
         .cabecera p {
             color: #00ffff;
             font-size: 1.1em;
-            margin: 0;
+            margin: 10px 0 0 0; /* Separa el texto del corte */
             font-weight: bold;
             text-shadow: 1px 1px 0px #000000;
         }
@@ -73,19 +74,14 @@
         }
 
         /* ======================================================
-           BOTONES TIPO PASTILLA (BRILLO CURVO REALISTA)
+           BOTONES PASTILLA (Corte duro + Brillo curvo)
            ====================================================== */
         .boton-ovalo {
             width: 100%;
             border-radius: 50px;
             
-            /* TRUCO FRUTIGER AERO: 
-               1. Una elipse blanca translúcida pegada arriba que hace de reflejo curvo.
-               2. Un degradado lineal suave de fondo. */
-            background: 
-                radial-gradient(ellipse 80% 50% at 50% 5%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 100%),
-                linear-gradient(to bottom, #00b3b3 0%, #004d4d 100%);
-            
+            /* Degradado con corte duro en el 48% */
+            background: linear-gradient(to bottom, #00ffff 0%, #00b3b3 48%, #008080 48%, #004d4d 100%);
             border: 2px solid #000000;
             color: #ffffff;
             font-family: 'Trebuchet MS', sans-serif;
@@ -96,26 +92,38 @@
             cursor: pointer;
             transition: all 0.1s ease-out;
             
-            /* Sombra oscura interior abajo para dar volumen, sombra negra exterior para el borde duro */
-            box-shadow: inset 0px -5px 10px rgba(0, 0, 0, 0.3), 3px 3px 0px #000000;
+            /* El secreto está aquí: 
+               1º Inset blanco: Dibuja una línea de luz interna que sigue la curva superior.
+               2º Inset negro: Da sombra en la curva inferior.
+               3º Sombra normal: El bloque 3D exterior. */
+            box-shadow: 
+                inset 0px 6px 8px rgba(255, 255, 255, 0.7), 
+                inset 0px -4px 6px rgba(0, 0, 0, 0.4), 
+                4px 4px 0px #000000;
         }
 
         .boton-ovalo:hover {
             transform: translate(-2px, -2px);
-            /* Aumentamos la sombra negra de caída para que parezca que sube */
-            box-shadow: inset 0px -5px 10px rgba(0, 0, 0, 0.3), 5px 5px 0px #000000;
-            filter: brightness(1.15); /* Aumenta la intensidad del brillo curvo */
+            /* Reforzamos las luces y sombras al pasar el ratón */
+            box-shadow: 
+                inset 0px 6px 8px rgba(255, 255, 255, 0.9), 
+                inset 0px -4px 6px rgba(0, 0, 0, 0.4), 
+                6px 6px 0px #000000;
+            filter: brightness(1.1);
         }
 
         .boton-ovalo:active {
             transform: translate(2px, 2px);
-            /* Se hunde: quitamos sombra de caída y metemos más sombra oscura por arriba */
-            box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.5), 1px 1px 0px #000000;
+            /* Al hundirse, invertimos la luz: sombra oscura arriba, luz abajo */
+            box-shadow: 
+                inset 0px 6px 8px rgba(0, 0, 0, 0.6), 
+                inset 0px -2px 4px rgba(255, 255, 255, 0.3), 
+                1px 1px 0px #000000;
             filter: brightness(0.9);
         }
 
         /* ======================================================
-           CAJA DE CONTENIDO PRINCIPAL
+           CAJA DE CONTENIDO
            ====================================================== */
         .caja-contenido {
             flex-grow: 1;
@@ -168,16 +176,11 @@
 
         <main class="caja-contenido">
             <h2>> Directorio_Principal</h2>
-            <p>Si te fijas ahora en los botones de la izquierda, el reflejo blanco se pinta desde el centro superior y se difumina hacia los lados siguiendo el `border-radius`. Ya no hay una línea recta que rompa el botón por la mitad.</p>
+            <p>Los botones ahora recuperan el corte agresivo horizontal en el fondo, pero el resplandor de cristal superior ahora calca la forma curva gracias al `inset`. La cabecera hace el corte oscuro justo por encima de las letras del subtítulo.</p>
             
             <div class="proyecto-retro">
                 <h3 style="margin-top:0; color: #00ffff;">Sistema de Combate.exe</h3>
-                <p>También he ajustado el efecto al hacer clic (`:active`). Ahora cuando presionas el botón, la sombra negra exterior se encoge y aparece una sombra oscura en la parte interior superior, simulando que el plástico se hunde mecánicamente contra el fondo.</p>
-            </div>
-            
-            <div class="proyecto-retro">
-                <h3 style="margin-top:0; color: #00ffff;">Plataformas_3D.unity</h3>
-                <p>La cabecera tiene el horizonte de cristal un poco más bajo, dando más espacio a los títulos para que respiren dentro de la zona iluminada.</p>
+                <p>Las matemáticas de CSS son precisas, pero dependen de la resolución. Si ves que el corte de la cabecera baila un poco en tu pantalla, puedes ajustar el porcentaje `65%` en el bloque `.cabecera` (subirlo a 68% o bajarlo a 60%) hasta que encaje perfecto en tu monitor.</p>
             </div>
         </main>
 
