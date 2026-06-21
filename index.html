@@ -3,174 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portfolio de Desarrollo (KH Style)</title>
-    <!-- Importamos una fuente muy redondita y moderna de Google Fonts -->
+    <title>Portfolio - Sistema KH</title>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <style>
         /* ======================================================
-           ESTILOS BASE - COLORES AZULES
+           BASE Y FONDO AZUL PROFUNDO
            ====================================================== */
         body {
-            /* Fondo azul marino muy oscuro */
-            background-color: #010612; 
-            /* Para darle más atmósfera, puedes usar un degradado radial de fondo:
-               background: radial-gradient(circle, #021a42 0%, #010612 100%); */
+            background-color: #010612;
+            background: radial-gradient(circle at top left, #021a42 0%, #010612 80%);
             color: #ffffff;
-            font-family: 'Varela Round', sans-serif; /* Tipografía redonda */
+            font-family: 'Varela Round', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            min-height: 100vh;
         }
 
         /* ======================================================
-           HEADER (CABECERA) - FORMAS REDONDITAS Y CRISTAL
+           ESTRUCTURA PRINCIPAL (FLEXBOX)
            ====================================================== */
-        header {
-            /* Degradado azul KH para el panel */
-            background: linear-gradient(135deg, rgba(30, 80, 180, 0.8), rgba(5, 20, 50, 0.8));
-            
-            /* EFECTO CRISTAL TRANSÚLCIDO (Muy KH) */
-            backdrop-filter: blur(5px); 
-            -webkit-backdrop-filter: blur(5px); /* Soporte Safari */
-            
-            padding: 50px 20px;
-            text-align: center;
-            
-            /* BORDES MUY REDONDITOS (En la parte inferior) */
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            
-            /* BRILLO AZUL (Glow) exterior e interior */
-            border: 2px solid rgba(0, 240, 255, 0.4);
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
-            
-            max-width: 800px;
-            margin: 0 auto; /* Centrar la cabecera */
-            margin-top: -2px; /* Pequeño ajuste visual top */
+        .layout {
+            display: flex;
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+            gap: 40px; /* Espacio entre el menú y los proyectos */
+            align-items: flex-start; /* Para que la barra no se estire hacia abajo */
         }
 
-        header h1 {
+        /* ======================================================
+           BARRA LATERAL (MENÚ DE COMANDOS TIPO KH)
+           ====================================================== */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0; /* Evita que el menú se encoja */
+            position: sticky;
+            top: 50px; /* Hace que el menú se quede fijo al hacer scroll */
+        }
+
+        .perfil {
+            background: linear-gradient(135deg, rgba(30, 80, 180, 0.7), rgba(5, 20, 50, 0.7));
+            backdrop-filter: blur(5px);
+            padding: 30px 20px;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .perfil h1 {
             margin: 0;
-            font-size: 2.8em;
+            font-size: 2em;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            /* Brillo de texto azul cyan */
             text-shadow: 0 0 8px rgba(0, 217, 255, 1);
         }
 
-        .subtitle {
-            color: #a0dfff; /* Azul claro pastel */
-            font-size: 1.3em;
+        .perfil .subtitle {
+            color: #a0dfff;
+            font-size: 1em;
             margin-top: 10px;
         }
 
-        /* ======================================================
-           CONTENEDOR PRINCIPAL
-           ====================================================== */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+        /* Botones del Menú de Comandos */
+        .menu-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        h2 {
-            color: #ffffff;
-            text-shadow: 0 0 5px rgba(0, 217, 255, 0.8);
-            margin-bottom: 30px;
-            font-size: 2em;
-        }
-
-        /* ======================================================
-           TARJETAS DE PROYECTO (PANEL REDONDO Y BRILLANTE)
-           ====================================================== */
-        .project-card {
-            /* Panel azul oscuro translúcido */
-            background: linear-gradient(135deg, rgba(15, 45, 100, 0.7), rgba(2, 12, 32, 0.7));
-            
-            /* EFECTO CRISTAL */
-            backdrop-filter: blur(5px); 
-            -webkit-backdrop-filter: blur(5px);
-
-            padding: 25px;
-            
-            /* FORMAS MUY REDONDITAS EN TODO EL PANEL */
-            border-radius: 30px;
-            
-            margin-bottom: 25px;
-            
-            /* BRILLO (Glow) Cyan */
+        .menu-btn {
+            background: linear-gradient(90deg, rgba(15, 45, 100, 0.8), rgba(2, 12, 32, 0.8));
             border: 2px solid rgba(0, 217, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.1);
-            
-            transition: all 0.3s ease; /* Animación suave para el hover */
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 1.2em;
+            padding: 15px 25px;
+            border-radius: 50px; /* Botones totalmente redondos (cápsula) */
+            text-align: left;
             cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Efecto al pasar el ratón (Hover) como si seleccionaras el menú */
-        .project-card:hover {
-            transform: scale(1.02); /* Se agranda un pelín */
-            border: 2px solid rgba(0, 217, 255, 0.8); /* Brilla más el borde */
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.6); /* Brilla más la sombra */
-        }
-
-        .project-card h3 {
-            margin-top: 0;
-            color: #00d9ff; /* Cyan brillante para los títulos */
-            font-size: 1.6em;
-            text-shadow: 0 0 5px rgba(0, 217, 255, 0.5);
-        }
-
-        .project-card p {
-            color: #e0f7fa; /* Blanco azulado muy claro */
-            font-size: 1.1em;
-        }
-
-        /* ======================================================
-           ETIQUETAS TECNOLÓGICAS (FORMAS ORGÁNICAS)
-           ====================================================== */
-        .tech-tag {
-            background-color: rgba(0, 217, 255, 0.15); /* Fondo cyan muy suave */
-            padding: 8px 18px;
-            
-            /* EXTREMOS TOTALMENTE REDONDOS (Como cápsulas) */
-            border-radius: 50px;
-            
-            font-size: 0.9em;
-            font-weight: bold;
-            color: #00d9ff; /* Texto cyan brillante */
-            margin-right: 8px;
-            display: inline-block;
-            margin-top: 10px;
-            border: 1px solid rgba(0, 217, 255, 0.3);
-            box-shadow: 0 0 5px rgba(0, 217, 255, 0.2);
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>[Tu Nombre]</h1>
-        <p class="subtitle">Programador de Videojuegos & Entornos Interactivos</p>
-    </header>
-
-    <div class="container">
-        <h2>_ Mis Proyectos</h2>
-
-        <!-- Panel de proyecto con hover de menú -->
-        <div class="project-card">
-            <h3>Nombre del Juego / Prototipo</h3>
-            <p>Implementación de mecánicas principales en [Unity/Unreal]. Este panel imita la forma redonda y translúcida de los menús de KH.</p>
-            <span class="tech-tag">C#</span>
-            <span class="tech-tag">Unity</span>
-            <span class="tech-tag">WebGL</span>
-        </div>
-
-        <div class="project-card">
-            <h3>Sistema de Combate</h3>
-            <p>Desarrollo de IA enemiga y lógicas de daño en Blueprints.</p>
-            <span class="tech-tag">C++</span>
-            <span class="tech-tag">Unreal Engine</span>
-            <span class="tech-tag">AI</span>
-        </div>
-    </div>
-</body>
-</html>
+        /* Efecto al pasar el ratón (Como elegir "Magia" o "Atacar") */
+        .menu-btn:hover {
+            border-color: #00d9ff;
+            background: linear-gradient(90deg, rgba(0, 150, 255, 0.5), rgba(15, 45, 100, 0.8));
+            box-shadow: 0 0 20px rgba(0, 21
