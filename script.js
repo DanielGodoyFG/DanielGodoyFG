@@ -16,8 +16,8 @@ const baseDeDatos = {
         <h2>> Perfil_Usuario.txt</h2>
         <p>Iniciando volcado de memoria personal...</p>
         <div class="proyecto-retro">
-            <p>Soy un programador enfocado en la lógica interna y arquitectura de videojuegos. Mi entorno de trabajo principal se basa en solucionar problemas complejos de gameplay, físicas y sistemas interactivos utilizando C# y C++.</p>
-            <p>Actualmente desarrollo proyectos técnicos integrando estos sistemas directamente en motores como Unreal Engine y Unity.</p>
+            <p>Soy un programador enfocado en la lógica interna y arquitectura de videojuegos. Mi entorno de trabajo principal se basa en solucionar problemas complejos de gameplay, físicas y sistemas interactivos utilizando C# en Unity y Blueprints en Unreal.</p>
+            <p>Actualmente soy estudiante en la escuela de arte y programación de videojuegos FrameGames.</p>
         </div>
     `,
     contacto: `
