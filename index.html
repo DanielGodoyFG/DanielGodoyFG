@@ -30,13 +30,11 @@
         }
 
         .cabecera-top {
-            /* Opacidad del resplandor bajada de 0.6 a 0.3 */
             background: 
                 radial-gradient(ellipse 150% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%),
                 linear-gradient(to bottom, #00b3b3 0%, #005f5f 100%);
             padding: 15px 30px 10px 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.4);
-            /* Sombra interna suavizada */
             box-shadow: inset 0px 4px 8px rgba(255, 255, 255, 0.4);
         }
 
@@ -70,21 +68,21 @@
             flex-grow: 1;
             width: 100%;
         }
-        
-        /* ======================================================
-           MENÚ LATERAL
-           ====================================================== */
-        <nav class="menu-lateral">
-            <button id="btn-proyectos" class="boton-ovalo">Proyectos</button>
-            <button id="btn-habilidades" class="boton-ovalo">Habilidades</button>
-            <button id="btn-sobremi" class="boton-ovalo">Sobre mí</button>
-            <button id="btn-contacto" class="boton-ovalo">Contacto</button>
-        </nav>
 
-        <main id="pantalla-principal" class="caja-contenido">
-            <h2>> Inicializando_Sistema...</h2>
-            <p>Selecciona un directorio en el panel izquierdo.</p>
-        </main>
+        /* ======================================================
+           MENÚ LATERAL (¡ESTA ES LA PARTE QUE SE BORRÓ!)
+           ====================================================== */
+        .menu-lateral {
+            width: 250px;
+            background-color: #0d1b1e;
+            border-right: 4px solid #000000;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: inset -5px 0px 10px rgba(0,0,0,0.5);
+        }
 
         /* ======================================================
            BOTONES PASTILLA (Reflejo domado + Legibilidad)
@@ -92,13 +90,10 @@
         .boton-ovalo {
             width: 100%;
             border-radius: 50px;
-            
-            /* Opacidad de la capa de gel bajada drásticamente (de 0.8 a 0.3) */
             background: 
                 linear-gradient(to right, rgba(0, 30, 30, 0.6) 0%, transparent 15%, transparent 85%, rgba(0, 30, 30, 0.6) 100%),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 48%, transparent 49%),
                 linear-gradient(to bottom, #00e6e6 0%, #00b3b3 48%, #006666 48%, #003333 100%);
-                
             border: 2px solid #000000;
             color: #ffffff;
             font-family: 'Trebuchet MS', sans-serif;
@@ -108,11 +103,7 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.1s ease-out;
-            
-            /* SOMBRA DE TEXTO: Esto salva la legibilidad */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-            
-            /* Bisel blanco interno reducido */
             box-shadow: 
                 inset 0px 6px 8px rgba(255, 255, 255, 0.4), 
                 inset 0px -4px 6px rgba(0, 0, 0, 0.7), 
@@ -187,23 +178,20 @@
     <div class="cuerpo-dividido">
         
         <nav class="menu-lateral">
-            <button class="boton-ovalo">Proyectos</button>
-            <button class="boton-ovalo">Habilidades</button>
-            <button class="boton-ovalo">Sobre mí</button>
-            <button class="boton-ovalo">Contacto</button>
+            <button id="btn-proyectos" class="boton-ovalo">Proyectos</button>
+            <button id="btn-habilidades" class="boton-ovalo">Habilidades</button>
+            <button id="btn-sobremi" class="boton-ovalo">Sobre mí</button>
+            <button id="btn-contacto" class="boton-ovalo">Contacto</button>
         </nav>
 
-        <main class="caja-contenido">
-            <h2>> Directorio_Principal</h2>
-            <p>Los blancos intensos se han domado. Ahora la cabecera tiene un resplandor mucho más sutil que deja respirar al color turquesa de fondo.</p>
-            
-            <div class="proyecto-retro">
-                <h3 style="margin-top:0; color: #00ffff;">Boton_Gelatina_v2.css</h3>
-                <p>En los botones he bajado la opacidad de la capa blanca a menos de la mitad y he añadido una sombra negra suave detrás de las letras (`text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8)`). El resultado es que mantienes el volumen de gel 3D, pero el texto se lee perfectamente a la primera.</p>
-            </div>
+        <main id="pantalla-principal" class="caja-contenido">
+            <h2>> Inicializando_Sistema...</h2>
+            <p>Selecciona un directorio en el panel izquierdo.</p>
         </main>
 
     </div>
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
