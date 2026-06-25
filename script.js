@@ -6,7 +6,7 @@ const baseDeDatos = {
         <div class="proyecto-retro">
             <h3 style="margin-top:0; color: #00ffff;">Sistema_Fisicas.exe</h3>
             <p>Cargando datos de colisiones y rigidbodies...</p>
-        </div>
+        </div> 
     `,
     habilidades: `
         <h2>> Habilidades_Tecnicas</h2>
