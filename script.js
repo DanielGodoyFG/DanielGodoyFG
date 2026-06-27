@@ -18,7 +18,17 @@ const baseDeDatos = {
     `,
     habilidades: `
         <h2>> Habilidades_Tecnicas</h2>
-        <p>Cargando árbol de habilidades del jugador...</p>
+        
+        <div class="proyecto-retro">
+            <h3 style="margin-top:0; color: #ffffff;">Arquitectura Modular y Sistemas Base</h3>
+            <p>Trabajo bajo la filosofía de construir un núcleo (Core Framework) extremadamente sólido antes de escalar. Al desarrollar sistemas base robustos e independientes, garantizo que la fase de producción de contenido final sea mucho más rápida, iterativa y libre de bugs en cadena.</p>
+        </div>
+
+        <div class="proyecto-retro">
+            <h3 style="margin-top:0; color: #ffffff;">Herramientas y Lenguajes</h3>
+            <p>> <strong>Unity / C#</strong> (Físicas custom, Máquinas de Estado, ScriptableObjects)</p>
+            <p>> <strong>Unreal Engine / C++</strong> (Componentes modulares, AnimNotifies, Blueprints híbridos)</p>
+        </div>
     `,
     sobreMi: `
         <h2>> Perfil_Usuario.txt</h2>
@@ -130,5 +140,5 @@ function volverAProyectos() {
 // 7. INICIO AUTOMÁTICO
 // Simulamos que el usuario hace clic en "Proyectos" nada más abrir la web
 window.onload = () => {
-    btnProyectos.click();
+    efectoEscribirTerminal();
 };
