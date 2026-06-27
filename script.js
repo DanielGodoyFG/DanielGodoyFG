@@ -1,6 +1,5 @@
 // 1. DICCIONARIO DE CONTENIDOS
 const baseDeDatos = {
-    // --- MENÚ PRINCIPAL ---
     proyectos: `
         <h2>> Directorio_Proyectos</h2>
         <p>Selecciona un ejecutable para ver los detalles técnicos:</p>
@@ -32,8 +31,6 @@ const baseDeDatos = {
         <h2>> Ping_Red</h2>
         <p>Abriendo puertos de comunicación...</p>
     `,
-
-    // --- SUB-PÁGINAS DE LOS PROYECTOS (Lo nuevo) ---
     proyecto_fisicas: `
         <h2>> Directorio_Proyectos_Sistema_Fisicas.exe</h2>
         <button onclick="volverAProyectos()" style="background: transparent; border: 1px solid #00ffff; color: #00ffff; font-family: inherit; font-weight: bold; padding: 5px 15px; cursor:pointer; margin-bottom: 20px;">
@@ -43,8 +40,6 @@ const baseDeDatos = {
         <div class="proyecto-retro">
             <h3 style="margin-top:0; color: #ffffff;">Físicas Custom (Unity / C#)</h3>
             <p>El motor de físicas por defecto generaba cuellos de botella al instanciar cientos de proyectiles. Diseñé un sistema de colisiones basado en Raycasts paralelos que mejoró el rendimiento un 40%.</p>
-            <br>
-            <p style="color: #008b8b;">[ Aquí podrías poner un vídeo .webm del sistema funcionando ]</p>
         </div>
     `,
     proyecto_combate: `
@@ -55,9 +50,7 @@ const baseDeDatos = {
 
         <div class="proyecto-retro">
             <h3 style="margin-top:0; color: #ffffff;">Combate Hack & Slash (Unreal / C++)</h3>
-            <p>Creación de un componente de combate reutilizable. Utilicé AnimNotifies en Unreal para sincronizar las cajas de daño (hitboxes) exactamente con los frames clave de la animación de ataque de la espada.</p>
-            <br>
-            <p style="color: #008b8b;">[ Enlace al repo de GitHub o bloques de código C++ aquí ]</p>
+            <p>Creación de un componente de combate reutilizable. Utilicé AnimNotifies en Unreal para sincronizar las hitboxes exactamente con los frames clave de la animación.</p>
         </div>
     `
 };
@@ -69,48 +62,73 @@ const btnHabilidades = document.getElementById('btn-habilidades');
 const btnSobreMi = document.getElementById('btn-sobremi');
 const btnContacto = document.getElementById('btn-contacto');
 
-// --- LO NUEVO: LA FUNCIÓN DE TRANSICIÓN ---
-// Es el equivalente exacto a lanzar una corrutina con un WaitForSeconds
-function cambiarPantallaConZoom(nuevoContenido) {
-    // 1. Apagamos la pantalla y hacemos el zoom (aplicando la clase CSS)
+// 3. LA CORRUTINA DE TEXTO (Efecto Máquina de Escribir)
+function efectoEscribirTerminal() {
+    const h2 = pantalla.querySelector('h2');
+    if (!h2) return; // Si por algún motivo no hay h2, sale de la función
+    
+    const textoFinal = h2.innerText; 
+    h2.innerHTML = ''; // Borra el texto instantáneamente
+    
+    let iterador = 0;
+    const velocidad = 20; // Milisegundos entre cada letra (muy rápido)
+
+    const intervalo = setInterval(() => {
+        // En cada "frame", añade una letra más y le pega el cursor al final
+        h2.innerHTML = textoFinal.substring(0, iterador) + '<span class="cursor-terminal">_</span>';
+        iterador++;
+
+        if (iterador > textoFinal.length) {
+            clearInterval(intervalo); // Termina la animación
+        }
+    }, velocidad);
+}
+
+// 4. FUNCIÓN DE TRANSICIÓN MAESTRA
+function cambiarPantallaConZoom(nuevoContenido, idBotonSeleccionado) {
+    // A. Lógica visual de los botones del menú
+    document.querySelectorAll('.boton-ovalo').forEach(btn => {
+        btn.classList.remove('boton-activo'); // Levanta todos los botones
+    });
+    
+    // Si pasamos un ID de botón, lo hunde y lo ilumina
+    if (idBotonSeleccionado) {
+        document.getElementById(idBotonSeleccionado).classList.add('boton-activo');
+    }
+
+    // B. Lógica de animación de la pantalla
     pantalla.classList.add('efecto-apagado');
     
-    // 2. Esperamos 200 milisegundos (0.2s) a que termine la animación
     setTimeout(() => {
-        // 3. Cambiamos el contenido en secreto mientras está oscuro
         pantalla.innerHTML = nuevoContenido;
-        
-        // 4. Volvemos a encender la pantalla quitando la clase
         pantalla.classList.remove('efecto-apagado');
+        
+        // C. Disparamos la máquina de escribir justo al "encender" la pantalla
+        efectoEscribirTerminal(); 
     }, 200); 
 }
 
-// 3. EVENTOS DEL MENÚ LATERAL (Usando la nueva función)
-btnProyectos.addEventListener('click', () => {
-    cambiarPantallaConZoom(baseDeDatos.proyectos);
-});
+// 5. EVENTOS DEL MENÚ LATERAL
+btnProyectos.addEventListener('click', () => cambiarPantallaConZoom(baseDeDatos.proyectos, 'btn-proyectos'));
+btnHabilidades.addEventListener('click', () => cambiarPantallaConZoom(baseDeDatos.habilidades, 'btn-habilidades'));
+btnSobreMi.addEventListener('click', () => cambiarPantallaConZoom(baseDeDatos.sobreMi, 'btn-sobremi'));
+btnContacto.addEventListener('click', () => cambiarPantallaConZoom(baseDeDatos.contacto, 'btn-contacto'));
 
-btnHabilidades.addEventListener('click', () => {
-    cambiarPantallaConZoom(baseDeDatos.habilidades);
-});
-
-btnSobreMi.addEventListener('click', () => {
-    cambiarPantallaConZoom(baseDeDatos.sobreMi);
-});
-
-btnContacto.addEventListener('click', () => {
-    cambiarPantallaConZoom(baseDeDatos.contacto);
-});
-
-// 4. FUNCIONES DE NAVEGACIÓN DE PROYECTOS
+// 6. EVENTOS DE LOS PROYECTOS INDIVIDUALES
 function abrirProyecto(idProyecto) {
     if (idProyecto === 'fisicas') {
-        cambiarPantallaConZoom(baseDeDatos.proyecto_fisicas);
+        cambiarPantallaConZoom(baseDeDatos.proyecto_fisicas, 'btn-proyectos');
     } else if (idProyecto === 'combate') {
-        cambiarPantallaConZoom(baseDeDatos.proyecto_combate);
+        cambiarPantallaConZoom(baseDeDatos.proyecto_combate, 'btn-proyectos');
     }
 }
 
 function volverAProyectos() {
-    cambiarPantallaConZoom(baseDeDatos.proyectos);
+    cambiarPantallaConZoom(baseDeDatos.proyectos, 'btn-proyectos');
 }
+
+// 7. INICIO AUTOMÁTICO
+// Simulamos que el usuario hace clic en "Proyectos" nada más abrir la web
+window.onload = () => {
+    btnProyectos.click();
+};
