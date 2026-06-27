@@ -20,7 +20,7 @@
         }
 
         /* ======================================================
-           CABECERA (Brillo reducido al 30%)
+           CABECERA
            ====================================================== */
         .cabecera-contenedor {
             width: 100%;
@@ -121,11 +121,17 @@
 
         .boton-ovalo:active {
             transform: translate(2px, 2px);
+        }
+
+        /* EL ESTADO ACTIVO DEL BOTÓN (UX) */
+        .boton-activo {
+            transform: translate(2px, 2px) !important;
             box-shadow: 
-                inset 0px 6px 8px rgba(0, 0, 0, 0.5), 
+                inset 0px 6px 8px rgba(0, 0, 0, 0.6), 
                 inset 0px -2px 4px rgba(255, 255, 255, 0.1), 
-                1px 1px 0px #000000;
-            filter: brightness(0.9);
+                1px 1px 0px #000000 !important;
+            filter: brightness(0.85) !important;
+            border-color: #00ffff !important; /* Borde iluminado indicando selección */
         }
 
         /* ======================================================
@@ -134,7 +140,12 @@
         .caja-contenido {
             flex-grow: 1;
             background-color: #022026;
-            background: radial-gradient(circle at center, #003333 0%, #011417 100%);
+            
+            /* EFECTO CRT SCANLINES INYECTADO EN EL FONDO */
+            background: 
+                repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(0, 229, 255, 0.04) 3px, rgba(0, 0, 0, 0.15) 4px),
+                radial-gradient(circle at center, #003333 0%, #011417 100%);
+            
             padding: 30px;
             overflow-y: auto; 
             box-sizing: border-box;
@@ -147,10 +158,10 @@
         }
 
         .efecto-apagado {
-            transform: scale(0.96); /* Ahora hace un Zoom Out (se hunde hacia el fondo) */
+            transform: scale(0.96); /* Zoom Out / Hundimiento */
             opacity: 0; 
             filter: brightness(0); 
-        }
+        } 
 
         .caja-contenido h2 {
             color: #00ffff;
@@ -158,6 +169,7 @@
             padding-bottom: 5px;
             margin-top: 0;
             text-shadow: 2px 2px 0px #000000;
+            min-height: 35px; /* Evita que la pantalla salte al escribir */
         }
 
         .caja-contenido p {
@@ -172,6 +184,43 @@
             padding: 15px;
             margin-bottom: 20px;
             color: #ffffff;
+        }
+
+        /* ======================================================
+           SCROLLBAR PERSONALIZADA (FRUTIGER AERO)
+           ====================================================== */
+        .caja-contenido::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        .caja-contenido::-webkit-scrollbar-track {
+            background: rgba(0, 20, 25, 0.8);
+            border-left: 2px solid #000000; /* Borde duro separador */
+        }
+
+        .caja-contenido::-webkit-scrollbar-thumb {
+            /* Textura de pastilla idéntica a los botones */
+            background: 
+                linear-gradient(to right, rgba(0, 30, 30, 0.6) 0%, transparent 15%, transparent 85%, rgba(0, 30, 30, 0.6) 100%),
+                linear-gradient(to bottom, #00ffff 0%, #008080 100%);
+            border-radius: 50px;
+            border: 2px solid #000000;
+            box-shadow: inset 0px 4px 6px rgba(255, 255, 255, 0.5);
+        }
+
+        .caja-contenido::-webkit-scrollbar-thumb:hover {
+            filter: brightness(1.2);
+        }
+
+        /* ======================================================
+           ANIMACIÓN DEL CURSOR DE TERMINAL
+           ====================================================== */
+        .cursor-terminal {
+            animation: parpadeo 1s step-end infinite;
+        }
+        @keyframes parpadeo {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
     </style>
 </head>
@@ -189,16 +238,14 @@
     <div class="cuerpo-dividido">
         
         <nav class="menu-lateral">
-            <button id="btn-proyectos" class="boton-ovalo">Proyectos</button>
+            <button id="btn-proyectos" class="boton-ovalo boton-activo">Proyectos</button>
             <button id="btn-habilidades" class="boton-ovalo">Habilidades</button>
             <button id="btn-sobremi" class="boton-ovalo">Sobre mí</button>
             <button id="btn-contacto" class="boton-ovalo">Contacto</button>
         </nav>
 
         <main id="pantalla-principal" class="caja-contenido">
-            <h2>> Inicializando_Sistema...</h2>
-            <p>Selecciona un directorio en el panel izquierdo.</p>
-        </main>
+            </main>
 
     </div>
 
