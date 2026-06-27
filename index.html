@@ -139,7 +139,17 @@
             overflow-y: auto; 
             box-sizing: border-box;
             box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.8);
+
+            transition: all 0.2s ease-in-out; 
+            transform: scale(1);
+            opacity: 1;
+            filter: brightness(1);
         }
+
+        .efecto-apagado {
+            transform: scale(1.03); /* Hace un pequeño Zoom In */
+            opacity: 0; /* Se hace transparente */
+            filter: brightness(0); /* Se oscurece al máximo */
 
         .caja-contenido h2 {
             color: #00ffff;
