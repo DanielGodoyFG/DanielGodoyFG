@@ -64,40 +64,53 @@ const baseDeDatos = {
 
 // 2. REFERENCIAS A LA INTERFAZ
 const pantalla = document.getElementById('pantalla-principal');
-
 const btnProyectos = document.getElementById('btn-proyectos');
 const btnHabilidades = document.getElementById('btn-habilidades');
 const btnSobreMi = document.getElementById('btn-sobremi');
 const btnContacto = document.getElementById('btn-contacto');
 
-// 3. EVENTOS DEL MENÚ LATERAL
+// --- LO NUEVO: LA FUNCIÓN DE TRANSICIÓN ---
+// Es el equivalente exacto a lanzar una corrutina con un WaitForSeconds
+function cambiarPantallaConZoom(nuevoContenido) {
+    // 1. Apagamos la pantalla y hacemos el zoom (aplicando la clase CSS)
+    pantalla.classList.add('efecto-apagado');
+    
+    // 2. Esperamos 200 milisegundos (0.2s) a que termine la animación
+    setTimeout(() => {
+        // 3. Cambiamos el contenido en secreto mientras está oscuro
+        pantalla.innerHTML = nuevoContenido;
+        
+        // 4. Volvemos a encender la pantalla quitando la clase
+        pantalla.classList.remove('efecto-apagado');
+    }, 200); 
+}
+
+// 3. EVENTOS DEL MENÚ LATERAL (Usando la nueva función)
 btnProyectos.addEventListener('click', () => {
-    pantalla.innerHTML = baseDeDatos.proyectos;
+    cambiarPantallaConZoom(baseDeDatos.proyectos);
 });
 
 btnHabilidades.addEventListener('click', () => {
-    pantalla.innerHTML = baseDeDatos.habilidades;
+    cambiarPantallaConZoom(baseDeDatos.habilidades);
 });
 
 btnSobreMi.addEventListener('click', () => {
-    pantalla.innerHTML = baseDeDatos.sobreMi;
+    cambiarPantallaConZoom(baseDeDatos.sobreMi);
 });
 
 btnContacto.addEventListener('click', () => {
-    pantalla.innerHTML = baseDeDatos.contacto;
+    cambiarPantallaConZoom(baseDeDatos.contacto);
 });
 
-// 4. FUNCIONES DE NAVEGACIÓN DE PROYECTOS (Lo nuevo)
-// Esta función lee el ID que le pasamos al hacer clic y busca ese proyecto en la base de datos
+// 4. FUNCIONES DE NAVEGACIÓN DE PROYECTOS
 function abrirProyecto(idProyecto) {
     if (idProyecto === 'fisicas') {
-        pantalla.innerHTML = baseDeDatos.proyecto_fisicas;
+        cambiarPantallaConZoom(baseDeDatos.proyecto_fisicas);
     } else if (idProyecto === 'combate') {
-        pantalla.innerHTML = baseDeDatos.proyecto_combate;
+        cambiarPantallaConZoom(baseDeDatos.proyecto_combate);
     }
 }
 
-// Función simple para el botón de "Volver"
 function volverAProyectos() {
-    pantalla.innerHTML = baseDeDatos.proyectos;
+    cambiarPantallaConZoom(baseDeDatos.proyectos);
 }
