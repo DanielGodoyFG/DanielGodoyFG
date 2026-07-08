@@ -38,7 +38,6 @@ const baseDeDatos = {
         </div>
     `,
     contacto: `
-        contacto: `
         <h2>> Protocolo_Conexion // Contacto</h2>
         
         <div class="proyecto-retro">
@@ -54,7 +53,6 @@ const baseDeDatos = {
                 ¿Quieres comprobar de primera mano cuántas horas le dedico a analizar mecánicas, Game Design y Game Feel de forma empírica? Curiosea mi perfil y mi biblioteca de juegos.
             </p>
         </div>
-    `,
     `,
     proyecto_fisicas: `
         <h2>> Directorio_Proyectos_Sistema_Fisicas.exe</h2>
