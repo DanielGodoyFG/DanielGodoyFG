@@ -321,7 +321,11 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let script = document.createElement('script');
+        script.src = 'script.js?v=' + Date.now();
+        document.body.appendChild(script);
+    </script>
 
 </body>
 </html>
