@@ -43,7 +43,7 @@ const baseDeDatos = {
         <div class="proyecto-retro">
             <h3 style="margin-top:0; color: #ffffff;">Canales de Comunicación</h3>
             <p><strong>> GMAIL:</strong> <a href="mailto:danielg.personal@gmail.com" style="color: #00ffff; text-decoration: none;">tu.email@gmail.com</a></p>
-            <p><strong>> TELÉFONO:</strong> <span style="color: #c4f5f5;">+34 600 00 00 00</span></p>
+            <p><strong>> TELÉFONO:</strong> <span style="color: #c4f5f5;">+34 610 25 64 65</span></p>
         </div>
 
         <div class="proyecto-retro" style="border-color: #008b8b;">
