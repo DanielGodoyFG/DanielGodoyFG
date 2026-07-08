@@ -38,8 +38,23 @@ const baseDeDatos = {
         </div>
     `,
     contacto: `
-        <h2>> Ping_Red</h2>
-        <p>Abriendo puertos de comunicación...</p>
+        contacto: `
+        <h2>> Protocolo_Conexion // Contacto</h2>
+        
+        <div class="proyecto-retro">
+            <h3 style="margin-top:0; color: #ffffff;">Canales de Comunicación</h3>
+            <p><strong>> GMAIL:</strong> <a href="mailto:danielg.personal@gmail.com" style="color: #00ffff; text-decoration: none;">tu.email@gmail.com</a></p>
+            <p><strong>> TELÉFONO:</strong> <span style="color: #c4f5f5;">+34 600 00 00 00</span></p>
+        </div>
+
+        <div class="proyecto-retro" style="border-color: #008b8b;">
+            <h3 style="margin-top:0; color: #00ffff;">Estudio de Campo & Referencias</h3>
+            <p><strong>> STEAM PROFILE:</strong> <a href="https://steamcommunity.com/id/exxyo/" target="_blank" style="color: #ffffff; background: #005f5f; padding: 2px 8px; border: 1px solid #00ffff; text-decoration: none; font-size: 0.9em; font-weight: bold;">[ ABRIR_ENLACE.EXE ]</a></p>
+            <p style="font-size: 0.95em; color: #c4f5f5; margin-top: 15px; line-height: 1.5;">
+                ¿Quieres comprobar de primera mano cuántas horas le dedico a analizar mecánicas, Game Design y Game Feel de forma empírica? Curiosea mi perfil y mi biblioteca de juegos.
+            </p>
+        </div>
+    `,
     `,
     proyecto_fisicas: `
         <h2>> Directorio_Proyectos_Sistema_Fisicas.exe</h2>
