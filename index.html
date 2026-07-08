@@ -82,6 +82,8 @@
             flex-direction: column;
             gap: 15px;
             box-shadow: inset -5px 0px 10px rgba(0,0,0,0.5);
+
+            flex-shrink: 0;
         }
 
         /* ======================================================
@@ -89,6 +91,9 @@
            ====================================================== */
         .boton-ovalo {
             width: 100%;
+
+            box-sizing: border-box;
+            
             border-radius: 50px;
             background: 
                 linear-gradient(to right, rgba(0, 30, 30, 0.6) 0%, transparent 15%, transparent 85%, rgba(0, 30, 30, 0.6) 100%),
