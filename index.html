@@ -231,6 +231,62 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+
+        /* ======================================================
+           LAYOUT ADAPTABLE PARA MÓVILES (Media Query)
+           ====================================================== */
+        @media (max-width: 768px) {
+            /* 1. Cambiamos el cuerpo de fila (horizontal) a columna (vertical) */
+            .cuerpo-dividido {
+                flex-direction: column;
+            }
+
+            /* 2. Transformamos el menú lateral en una barra superior deslizable */
+            .menu-lateral {
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                height: 65px; /* Altura fija para que no coma mucha pantalla */
+                
+                flex-direction: row; /* Botones uno al lado del otro */
+                overflow-x: auto;    /* Permite deslizar horizontalmente si no caben */
+                overflow-y: hidden;  /* Prohíbe el scroll vertical aquí */
+                
+                padding: 10px;
+                gap: 12px;
+                
+                /* Quitamos el borde derecho y lo ponemos abajo como separador */
+                border-right: none;
+                border-bottom: 4px solid #000000;
+                box-shadow: inset 0px -5px 10px rgba(0,0,0,0.5);
+                
+                /* Suaviza el deslizamiento táctil en iPhones y Android */
+                -webkit-overflow-scrolling: touch; 
+            }
+
+            /* 3. Forzamos a los botones a no encogerse y mantener forma de pastilla */
+            .menu-lateral .boton-ovalo {
+                width: auto;       /* Ya no ocupan el 100% del ancho */
+                min-width: 130px;  /* Tamaño mínimo para que quepa el texto y se pulse bien con el dedo */
+                flex-shrink: 0;    /* Candado para que el layout horizontal no los aplaste */
+                padding: 8px 15px;
+                font-size: 1.1em;
+            }
+
+            /* Ajuste menor para el botón activo en móvil */
+            .boton-activo {
+                transform: translate(0px, 2px) !important; /* En móvil solo hunde hacia abajo, no hacia la derecha */
+            }
+
+            /* 4. La caja de contenido se adapta automáticamente */
+            .caja-contenido {
+                width: 100%;
+                flex-grow: 1; /* Se estira para ocupar TODO el resto de la pantalla vertical */
+                overflow-y: auto; /* Permite scroll normal de arriba a abajo */
+                padding: 20px;
+            }
+        }
+        
     </style>
 </head>
 <body>
